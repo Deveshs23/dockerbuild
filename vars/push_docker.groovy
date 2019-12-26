@@ -4,7 +4,7 @@ def push(String tag, String credential){
             withDockerRegistry(credentialsId: "${credential}", url: '')
             {
                 def myDockerImage = docker.build("${tag}:${currentBuild.number}")
-                myDockerImage.push("${tag}:${currentBuild.number}")
+                myDockerImage.push("${currentBuild.number}")
             }    
         }
         catch(err){
