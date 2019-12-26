@@ -3,7 +3,7 @@ def push(String tag, String credential){
             echo "Pushing Image into Repo: "
             withDockerRegistry(credentialsId: "${credential}", url: '')
             {
-                myDockerImage.push('latest')
+                myDockerImage.push("${tag}:${currentBuild.number}")
             }    
         }
         catch(err){
