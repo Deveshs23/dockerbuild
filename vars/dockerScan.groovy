@@ -10,4 +10,3 @@ def scan(String tag)
         }
     }
 
-}
