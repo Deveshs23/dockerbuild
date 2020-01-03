@@ -7,6 +7,7 @@ def terraform(){
             return
         }
         else{
+            println("${statusCode}")
             error("State Not Match")
         }
     }
