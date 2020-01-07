@@ -2,11 +2,14 @@ def call(String pFile){
     sh 'ls -l; pwd'
     final_path = "${workspace}/${pFile}"
     println("${final_path}")
-    Properties properties = new Properties()
-    File propertiesFile = new File("${final_path}")
-    propertiesFile.withInputStream {
-    properties.load(it)
-    }
+//    Properties properties = new Properties()
+//    File propertiesFile = new File("${final_path}")
+//    propertiesFile.withInputStream {
+//    properties.load(it)
+//    }
+    def props = readProperties  file:"${final_path}"
+    println(props['tag'])
+    
 //        checkout scm
         try {
             build(properties.tag, properties.filename, properties.docker_dir)
