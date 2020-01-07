@@ -1,7 +1,8 @@
 def call(String pFile){
     sh 'ls -l; pwd'
+    sh 'echo $pFile'
     Properties properties = new Properties()
-    File propertiesFile = new File("./${pFile}")
+    File propertiesFile = new File("${pFile}")
     propertiesFile.withInputStream {
     properties.load(it)
     }
