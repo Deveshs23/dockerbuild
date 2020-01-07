@@ -3,7 +3,7 @@ def call(String pFile){
     def properties = readProperties  file:"${pFile}"
         tag = properties['tag']
         filename = properties['filename']
-        docker_dir = properties['.']
+        docker_dir = properties['Docker_dir']
         credentialID = properties['credentialID']
 
 //        checkout scm
