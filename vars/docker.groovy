@@ -8,7 +8,7 @@ def call(String pFile){
     ansiColor('xterm'){
 //        checkout scm
         try {
-            build(properties."tag", properties."filename", properties."docker_dir")
+            build(properties.tag, properties.filename, properties."docker_dir")
         }
         catch (Exeption e){
             sendNotification("danger", "Docker build Job failed at getting requirements for ${environment}")
@@ -24,7 +24,7 @@ def call(String pFile){
             throw e
         }
         try {
-            push(properties."tag", properties."credentialID")
+            push(properties.tag, properties.credentialID)
         }
         catch (Exeption e){
             sendNotification("danger", "Docker push Job failed at getting requirements for ${environment}")
