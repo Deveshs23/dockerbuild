@@ -5,10 +5,9 @@ def call(){
     propertiesFile.withInputStream {
     properties.load(it)
     }
-    ansiColor('xterm'){
 //        checkout scm
         try {
-            build(properties.tag, properties.filename, properties."docker_dir")
+            build(properties.tag, properties.filename, properties.docker_dir)
         }
         catch (err){
             sendNotification("danger", "Docker build Job failed at getting requirements for ${environment}")
@@ -35,7 +34,6 @@ def call(){
 
     }
 
-}
 
 def build(String tag, String filename, String docker_dir){
     stage("Docker Build"){
