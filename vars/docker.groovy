@@ -1,7 +1,7 @@
 def call(String pFile){
  
     Properties properties = new Properties()
-    File propertiesFile = new File("${pFile}")
+ File propertiesFile = new File(this.class.getResource("${pFile}").getPath())
     propertiesFile.withInputStream {
     properties.load(it)
     }
