@@ -1,9 +1,8 @@
 def build(String filename, String docker_dir, String name)
 {
     stage('Docker Build'){
-        dir("${docker_dir}"){
-            pwd
-            myDockerImage = docker.build("${name}:${currentBuild.number}", "--file ${filename} .")
+            sh "pwd"
+        myDockerImage = docker.build("${name}:${currentBuild.number}", "--file ${filename} ${docker_dir}")
                 try{
                     myDockerImage.inside {
                         echo "Hello Inside the container"
@@ -15,8 +14,8 @@ def build(String filename, String docker_dir, String name)
                     throw err
                     }
             }
-    }
 }
+
 def push(name, credential){
     stage('docker push'){
         try{
