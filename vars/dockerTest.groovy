@@ -1,18 +1,14 @@
 def call(String pFile){
-    sh 'ls -l; pwd'
-    final_path = "${workspace}/${pFile}"
-    println("${final_path}")
-//    Properties properties = new Properties()
-//    File propertiesFile = new File("${final_path}")
-//    propertiesFile.withInputStream {
-//    properties.load(it)
-//    }
-    def props = readProperties  file:"${pFile}"
-    println(props['tag'])
-    
+ 
+    def properties = readProperties  file:"${pFile}"
+        tag = properties['tag']
+        filename = properties['filename']
+        docker_dir = properties['.']
+        credentialID = properties['credentialID']
+
 //        checkout scm
         try {
-            build(properties.tag, properties.filename, properties.docker_dir)
+            build("${tag}", "${filename}", "${docker_dir}")
         }
         catch (err){
             sendNotification("danger", "Docker build Job failed at getting requirements for ${environment}")
@@ -20,7 +16,7 @@ def call(String pFile){
             throw err
         }
         try {
-            scan(properties."tag")
+            scan("${tag}")
         }
         catch (err){
             sendNotification("danger", "Dcoker Scan Job failed at getting requirements for ${environment}")
@@ -28,7 +24,7 @@ def call(String pFile){
             throw err
         }
         try {
-            push(properties.tag, properties.credentialID)
+            push("${tag}", "${credentialID}")
         }
         catch (err){
             sendNotification("danger", "Docker push Job failed at getting requirements for ${environment}")
