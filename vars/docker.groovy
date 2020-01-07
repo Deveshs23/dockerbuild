@@ -10,26 +10,26 @@ def call(){
         try {
             build(properties.tag, properties.filename, properties."docker_dir")
         }
-        catch (Exeption e){
+        catch (err){
             sendNotification("danger", "Docker build Job failed at getting requirements for ${environment}")
-            echo e.toString()
-            throw e
+            echo err.toString()
+            throw err
         }
         try {
             scan(properties."tag")
         }
-        catch (Exeption e){
+        catch (err){
             sendNotification("danger", "Dcoker Scan Job failed at getting requirements for ${environment}")
-            echo e.toString()
-            throw e
+            echo err.toString()
+            throw err
         }
         try {
             push(properties.tag, properties.credentialID)
         }
-        catch (Exeption e){
+        catch (err){
             sendNotification("danger", "Docker push Job failed at getting requirements for ${environment}")
-            echo e.toString()
-            throw e
+            echo err.toString()
+            throw err
         }
         
 
