@@ -1,7 +1,9 @@
 def call(String pFile){
     sh 'ls -l; pwd'
+    final_path = "${workspace}/${pFile}"
+    println("${final_path}")
     Properties properties = new Properties()
-    File propertiesFile = new File("${workspace}/${pFile}")
+    File propertiesFile = new File("${final_path}")
     propertiesFile.withInputStream {
     properties.load(it)
     }
