@@ -1,6 +1,6 @@
-def build(String tag, String filename)
+def build(String tag, String filename, String docker_dir)
 {
-    myDockerImage = docker.build("${tag}:${currentBuild.number}", "--file ${filename} .")
+    myDockerImage = docker.build("${tag}:${currentBuild.number}", "--file ${filename} ${docker_dir}")
         try{
             myDockerImage.inside {
                 echo "Hello Inside the container"
