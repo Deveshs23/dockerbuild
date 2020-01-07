@@ -1,36 +1,35 @@
-def call(){
+def call(String pFile){
  
     Properties properties = new Properties()
-    File propertiesFile = new File('docker.properties')
+    File propertiesFile = new File("${pFile}")
     propertiesFile.withInputStream {
     properties.load(it)
     }
-    println(properties.tag)
 //        checkout scm
-        // try {
-        //     build(properties.tag, properties.filename, properties.docker_dir)
-        // }
-        // catch (err){
-        //     sendNotification("danger", "Docker build Job failed at getting requirements for ${environment}")
-        //     echo err.toString()
-        //     throw err
-        // }
-        // try {
-        //     scan(properties."tag")
-        // }
-        // catch (err){
-        //     sendNotification("danger", "Dcoker Scan Job failed at getting requirements for ${environment}")
-        //     echo err.toString()
-        //     throw err
-        // }
-        // try {
-        //     push(properties.tag, properties.credentialID)
-        // }
-        // catch (err){
-        //     sendNotification("danger", "Docker push Job failed at getting requirements for ${environment}")
-        //     echo err.toString()
-        //     throw err
-        // }
+        try {
+            build(properties.tag, properties.filename, properties.docker_dir)
+        }
+        catch (err){
+            sendNotification("danger", "Docker build Job failed at getting requirements for ${environment}")
+            echo err.toString()
+            throw err
+        }
+        try {
+            scan(properties."tag")
+        }
+        catch (err){
+            sendNotification("danger", "Dcoker Scan Job failed at getting requirements for ${environment}")
+            echo err.toString()
+            throw err
+        }
+        try {
+            push(properties.tag, properties.credentialID)
+        }
+        catch (err){
+            sendNotification("danger", "Docker push Job failed at getting requirements for ${environment}")
+            echo err.toString()
+            throw err
+        }
         
 
     }
