@@ -1,7 +1,7 @@
-def call(String pFile){
+def call(){
  
     Properties properties = new Properties()
- File propertiesFile = new File(this.class.getResource("${pFile}").getPath())
+    File propertiesFile = new File(this.class.getResource('docker.properties').getPath())
     propertiesFile.withInputStream {
     properties.load(it)
     }
