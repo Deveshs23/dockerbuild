@@ -1,7 +1,7 @@
 def call(){
  
     Properties properties = new Properties()
-    File propertiesFile = new File(this.class.getResource('docker.properties').getPath())
+    File propertiesFile = new File('docker.properties')
     propertiesFile.withInputStream {
     properties.load(it)
     }
