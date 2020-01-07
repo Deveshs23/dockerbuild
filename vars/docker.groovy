@@ -1,4 +1,4 @@
-def build(filename, docker_dir, name)
+def build(String filename, String docker_dir, String name)
 {
     stage('Docker Build'){
         dir("${docker_dir}"){
