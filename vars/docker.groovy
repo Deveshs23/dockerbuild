@@ -2,6 +2,7 @@ def build(filename, docker_dir, name)
 {
     stage('Docker Build'){
         dir("${docker_dir}"){
+            pwd
             myDockerImage = docker.build("${name}:${currentBuild.number}", "--file ${filename} .")
                 try{
                     myDockerImage.inside {
