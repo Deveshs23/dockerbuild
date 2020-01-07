@@ -1,18 +1,15 @@
-def build(String filename, String docker_dir, String name)
+def build(String tag, String filename, String docker_dir)
 {
-    stage('Docker Build'){
-            sh "pwd"
-        myDockerImage = docker.build("${name}:${currentBuild.number}", "--file ${filename} ${docker_dir}")
-                try{
-                    myDockerImage.inside {
-                        echo "Hello Inside the container"
-            
-                    }
-                }
-                catch(err){
-                    echo "Can not login in to container"
-                    throw err
-                    }
+    myDockerImage = docker.build("${tag}:${currentBuild.number}", "--file ${filename} ${docker_dir}")
+        try{
+            myDockerImage.inside {
+                echo "Hello Inside the container"
+    
+            }
+        }
+        catch(err){
+            echo "Can not login in to container"
+            throw err
             }
 }
 
