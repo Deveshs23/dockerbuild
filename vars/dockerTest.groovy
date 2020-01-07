@@ -7,7 +7,7 @@ def call(String pFile){
 //    propertiesFile.withInputStream {
 //    properties.load(it)
 //    }
-    def props = readProperties  file:"${final_path}"
+    def props = readProperties  file:"${pFile}"
     println(props['tag'])
     
 //        checkout scm
