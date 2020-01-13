@@ -1,7 +1,7 @@
 def readCustumerName(String file){
 
-  ['linux', 'windows'].each {arch ->
-    println("${arch}")
+  def list_of_custumer = ['linux', 'windows'] as String[]
+    list_of_custumer.each {arch ->
+        println("${arch}")
   }
-    
 }
