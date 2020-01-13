@@ -7,5 +7,5 @@ def readCustumerName(String file){
             done < "${path}"
         """
         
-    }
+    
 }
