@@ -1,7 +1,11 @@
 def readCustumerName(String file){
-     new File("${workspace}/${file}").eachLine {String line ->
-        while("${line}" != null)
-        println("${line}")
-        line++
+     def path = "${workspace}/${file}"
+        sh """
+            while IFS= read -r line
+            do
+                echo "$line"
+            done < "${path}"
+        """
+        
     }
 }
