@@ -1,10 +1,10 @@
 def readCustumerName(){
-//     def path = "${workspace}/${file}"
+   //  def path = "${workspace}/${file}"
         sh """
-            path="file.txt" 
+            path='file.txt' 
             while IFS= read -r line
             do
-                echo "$line"
-            done < "${path}"
+                echo $line
+            done < $path
         """
  }
