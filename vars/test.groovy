@@ -1,9 +1,6 @@
 def readCustumerName(String file){
-    File sfile = new File("${workspace}/${file}")
-    def read = "test"
-    while((read = line.readLine()) != null){
-    sfile.eachLine {String line ->
+     new File("${workspace}/${file}").eachLine {String line ->
+        while("${line}" != null)
         println("${line}")
     }
-   }
 }
