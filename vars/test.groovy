@@ -1,5 +1,5 @@
 def readCustumerName(String file){
-    new File("${file}").eachLine { line ->
+    new File("${workspace}/${file}").eachLine { line ->
         sh "helm upgrade  -f values.yaml ${line} ./ --namespace producer --install"
     }
 }
