@@ -4,7 +4,7 @@ def readCustumerName(String file){
  
             sh(script: """
             path='file.txt'
-            while IFS= read -r line
+            while IFS=read -r line
             do
                 echo $line
             done < $path
