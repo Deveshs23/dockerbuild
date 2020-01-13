@@ -5,7 +5,7 @@ def readCustumerName(String file){
             do
                 echo "$line"
             done < "${path}"
-        """, returnStdout: true))
+        """, returnStdout: true)
         
     
 }
