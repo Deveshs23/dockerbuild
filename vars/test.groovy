@@ -1,5 +1,5 @@
 def readCustumerName(String file){
-     new File("${workspace}/${file}").withReader {String line ->
+     new File("${workspace}/${file}").each {String line ->
         while("${line}" != null)
         println("${line}")
         line++
