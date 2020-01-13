@@ -1,8 +1,8 @@
 def readCustumerName(String file){
-     new File("${workspace}/${file}").each {String line ->
-          while("${line}" != null){
+     new File("${workspace}/${file}").split('\n').each  {String line ->
+  //        while("${line}" != null){
             println("${line}")
              
-    }
+//    }
 }
 }
