@@ -1,11 +1,11 @@
 def readCustumerName(String file){
      def path = "${workspace}/${file}"
-        sh """
+        sh(script: """
             while IFS= read -r line
             do
                 echo "$line"
             done < "${path}"
-        """
+        """, returnStdout: true))
         
     
 }
