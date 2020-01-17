@@ -55,7 +55,7 @@ def scout_suite(String aws_access_key, String aws_secret_key, String region, Str
     
     try {
         stage('Start Scout'){
-            sh "docker run --memory 2048m  -v `pwd`/scoutsuite-results:/opt/scoutsuite-results scoutsuite aws --access-key-id ${aws_access_key} --secret-access-key ${aws_secret_key} -r ${region} --report-name ${report}"
+            sh "docker run --memory 2048m  -v `pwd`/scoutsuite-results:/opt/scoutsuite-results deveshs23/scoutsuite aws --access-key-id ${aws_access_key} --secret-access-key ${aws_secret_key} -r ${region} --report-name ${report}"
         }
     }
     catch (Exception e){
