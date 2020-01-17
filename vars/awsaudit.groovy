@@ -53,7 +53,7 @@ def call(){
 
            }
 }
-def scout_suite(String aws_secret_key, String aws_access_key, String region, String report){
+def scout_suite(String aws_access_key, String aws_secret_key, String region, String report){
     
     try {
         stage('Start Scout'){
