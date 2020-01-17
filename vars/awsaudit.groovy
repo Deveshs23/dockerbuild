@@ -1,3 +1,4 @@
+
 #!/usr/bin/groovy
 
 // import groovy.json.JsonSlurper
@@ -45,11 +46,13 @@ def call(){
                    "${region}",
                    "${report_name}"
                )
-                send_json_data(
-                    "${elastic}",
-                    "${port}"
+                // send_json_data(
+                //     "${elastic}",
+                //     "${port}"
+                // )
+                report_publish(
+                    "${report_name}"
                 )
-                report_publish()
 
            }
 }
