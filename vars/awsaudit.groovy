@@ -3,33 +3,6 @@
 // import groovy.json.JsonSlurper
 
 def call(){
-    properties([
-        [$class: 'BuildConfigProjectProperty', autoRebuild: false, rebuildDisabled: false],
-        parameters([
-            password(defaultValue: '',
-            description: '', name: 'aws_access_key', trim: false),
-            password(defaultValue: '',
-            description: '', name: 'aws_secret_key', trim: false),
-            choice(choices: 
-            ['us-east-2', 'us-east-1', 'us-west-1',
-            'us-west-2', 'ap-east-1', 'ap-south-1', 
-            'ap-northeast-3', 'ap-northeast-2', 
-            'ap-southeast-1', 'ap-southeast-2',
-            'ap-northeast-1', 'ca-central-1', 
-            'cn-north-1', 'cn-northwest-1', 
-            'eu-central-1', 'eu-west-1', 
-            'eu-west-2', 'eu-west-3', 
-            'eu-north-1', 'me-south-1', 
-            'sa-east-1', 'us-gov-east-1', 
-            'us-gov-west-1'],
-            description: '', name: 'region'),
-            string(name: 'report_name', defaultValue: '', description: 'enter report_name'),
-            string(name: 'elastic', defaultValue: '', description: 'enter elasticsearch ip'),
-            string(name: 'elastic_port', defaultValue: '', description: 'enter elasticsearch port'),
-            string(name: 'kibana', defaultValue: '', description: 'enter kibana ip'),
-            string(name: 'kibana_port', defaultValue: '', description: 'enter kibana port')
-        ])
-    ])
 
         wrap([
          $class: 'MaskPasswordsBuildWrapper',
