@@ -130,4 +130,4 @@ def report_publish(report_name){
 //     def rootDir = pwd()
 //     def props = readJSON file: "${rootDir}@scoutreport/scoutsuite-results/${json_report}"
 // }
-}
+
