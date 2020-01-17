@@ -84,8 +84,8 @@ def report_publish(report_name){
                 allowMissing: false,
                 alwaysLinkToLastBuild: false,
                 keepAll: true,
-                reportDir: "scoutreport/",
-                reportFiles: "${report_name}",
+                reportDir: "scoutsuite-results",
+                reportFiles: "scoutsuite_results_aws-${report_name}.html",
                 reportName: 'HTML Report',
                 reportTitles: ''])
         }
