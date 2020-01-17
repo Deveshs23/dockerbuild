@@ -1,8 +1,3 @@
-
-#!/usr/bin/groovy
-
-// import groovy.json.JsonSlurper
-
 def call(){
 
     def userInput = input(id: 'userInput',    
