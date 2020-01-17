@@ -1,4 +1,8 @@
 
+#!/usr/bin/groovy
+
+// import groovy.json.JsonSlurper
+
 def call(){
 
     def userInput = input(id: 'userInput',    
@@ -32,22 +36,22 @@ def call(){
 
         wrap([
          $class: 'MaskPasswordsBuildWrapper',
-          varPasswordPairs: [[password: "${aws_access_key}",
-           var: 'aws_access_key'], [password: "${aws_secret_key}",
+          varPasswordPairs: [[password: "${userInput.aws_access_key}",
+           var: 'aws_access_key'], [password: "${userInput.aws_secret_key}",
            var: 'aws_secret_key']]
            ]){
                scout_suite(
-                   "${aws_access_key}",
-                   "${aws_secret_key}",
-                   "${region}",
-                   "${report_name}"
+                   "${userInput.aws_access_key}",
+                   "${userInput.aws_secret_key}",
+                   "${userInput.region}",
+                   "${userInput.report_name}"
                )
                 // send_json_data(
                 //     "${elastic}",
                 //     "${port}"
                 // )
                 report_publish(
-                    "${report_name}"
+                    "${userInput.report_name}"
                 )
 
            }
