@@ -4,7 +4,7 @@
 
 def call(){
     properties([
-        [$class: 'JiraProjectProperty', autoRebuild: false, rebuildDisabled: false],
+        [$class: 'BuildConfigProjectProperty', autoRebuild: false, rebuildDisabled: false],
         parameters([
             password(defaultValue: '',
             description: '', name: 'aws_access_key', trim: false),
