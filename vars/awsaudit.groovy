@@ -7,7 +7,7 @@ def call(){
     def userInput = input(id: 'userInput',    
 					message: 'Please specify environment',    
 					submitterParameter: "whoIsSubmitter",
-            parameters([
+            parameters: [
                 password(defaultValue: '',
                 description: '', name: 'aws_access_key', trim: false),
                 password(defaultValue: '',
@@ -30,7 +30,7 @@ def call(){
                 string(name: 'elastic_port', defaultValue: '', description: 'enter elasticsearch port'),
                 string(name: 'kibana', defaultValue: '', description: 'enter kibana ip'),
                 string(name: 'kibana_port', defaultValue: '', description: 'enter kibana port')
-            ])
+            ]
         )
 
         wrap([
@@ -53,11 +53,11 @@ def call(){
 
            }
 }
-def scout_suite(String aws_secrete_key, String aws_access_key, String region, String report){
+def scout_suite(String aws_secret_key, String aws_access_key, String region, String report){
     
     try {
         stage('Start Scout'){
-            sh "docker run --memory 2048m  -v `pwd`/scoutsuite-results:/opt/scoutsuite-results scoutsuite aws --access-key-id ${aws_access_key} --secret-access-key ${aws_secrete_key} -r ${region} --report-name ${report}"
+            sh "docker run --memory 2048m  -v `pwd`/scoutsuite-results:/opt/scoutsuite-results scoutsuite aws --access-key-id ${aws_access_key} --secret-access-key ${aws_secret_key} -r ${region} --report-name ${report}"
         }
     }
     catch (Exception e){
@@ -130,4 +130,3 @@ def report_publish(report_name){
 //     def rootDir = pwd()
 //     def props = readJSON file: "${rootDir}@scoutreport/scoutsuite-results/${json_report}"
 // }
-
